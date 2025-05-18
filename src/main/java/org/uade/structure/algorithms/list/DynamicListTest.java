@@ -17,18 +17,17 @@ public class DynamicListTest {
         test.add(2);
         test.add(3);
 
-        test.insert(8, 583);
+        //test.insert(8, 583);
 
-        //test.remove(8);
+        ListHelpers.print(test);
 
+        System.out.println("---------------------");
 
-        //System.out.println(test.get(5));
+        test.remove(4);
+        test.remove(3);
+        test.remove(2);
+        test.remove(1);
 
-
-        //test.insert(2,222);
-        //test.insert(3,333);
-        //test.insert(3,10);
-        //test.remove(2);
         ListHelpers.print(test);
     }
 }

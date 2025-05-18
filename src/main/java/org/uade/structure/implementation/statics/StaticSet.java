@@ -53,7 +53,6 @@ public class StaticSet implements SetADT {
             this.size++;
             this.empty = false;
         }
-        else throw new OverflowADTException("El elemento ya se encuentra en el Set");
     }
 
     @Override

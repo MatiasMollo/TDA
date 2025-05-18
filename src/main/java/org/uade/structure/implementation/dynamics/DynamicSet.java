@@ -17,7 +17,6 @@ public class DynamicSet implements SetADT {
         Node item = this.node;
         boolean found = false;
 
-        // Bucle infinito
         while(item != null && !found){
             if(item.item == value) found = true;
             else item = item.next;
@@ -30,17 +29,6 @@ public class DynamicSet implements SetADT {
     public int choose() {
         int index = 1;
         Node item = this.node;
-
-        /*
-        // Se obtiene la cantidad máxima
-        while(item.next != null){
-            index++;
-            item = item.next;
-        }
-
-        Random rand = new Random();
-        int random = rand.nextInt(index);
-         */
 
         Random rand = new Random();
         int random = rand.nextInt(this.size);
@@ -58,18 +46,19 @@ public class DynamicSet implements SetADT {
 
     @Override
     public void add(int value) {
-        if(this.exist(value)) throw new OverflowADTException("Ya existe el elemento en el Set");
+        //if(this.exist(value)) throw new OverflowADTException("Ya existe el elemento en el Set");
 
-        Node newNode = new Node(value);
-        newNode.next = this.node;
-        this.node = newNode;
+        if(!this.exist(value)){
+            Node newNode = new Node(value);
+            newNode.next = this.node;
+            this.node = newNode;
 
-        this.size++;
+            this.size++;
+        }
     }
 
     @Override
     public void remove(int element) {
-
         if(!this.exist(element)) throw new EmptyADTException("No existe el elemento a eliminar");
 
         if(this.node != null && this.node.next != null){

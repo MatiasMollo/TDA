@@ -53,19 +53,18 @@ public class DynamicLinkedList implements LinkedListADT {
     public void remove(int index) {
         if(index >= this.size || index < 0) throw new EmptyADTException("El indice no existe");
 
-        // Es correcto que al remover se corran todos los indices? o se debería insertar un cero
-        int currentIndex = 0;
-        Node currentElement = this.element;
-
-        while(currentIndex < index - 1){
-            currentElement = currentElement.next;
-            currentIndex++;
-        }
-        if((this.size - currentIndex) > 2){
-            currentElement.next = currentElement.next.next;
-        }
+        if(index == 0) this.element = this.element.next;
         else{
-            currentElement.next = null;
+            int currentIndex = 0;
+            Node currentElement = this.element;
+
+            while(currentIndex < index - 1){
+                currentElement = currentElement.next;
+                currentIndex++;
+            }
+
+            if((this.size - currentIndex) > 2) currentElement.next = currentElement.next.next;
+            else currentElement.next = null;
         }
 
         this.size--;
