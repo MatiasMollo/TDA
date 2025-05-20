@@ -24,7 +24,6 @@ public class DynamicLinkedList implements LinkedListADT {
 
     @Override
     public void insert(int index, int value) {
-        // es válido ingresar ceros hasta la posición del indice en caso de que sea vacío?
         if(index < 0)
             throw new EmptyADTException("El indice está fuera de rango");
 

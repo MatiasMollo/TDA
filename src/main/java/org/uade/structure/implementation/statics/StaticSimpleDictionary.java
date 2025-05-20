@@ -54,13 +54,6 @@ public class StaticSimpleDictionary implements SimpleDictionaryADT {
 
         this.size--;
         this.keys.remove(key);
-
-        /*
-        this.items[this.findIndex(key)] = null; // Falta mover los elementos del array
-        this.size--;
-        this.keys.remove(key);
-
-         */
     }
 
     @Override

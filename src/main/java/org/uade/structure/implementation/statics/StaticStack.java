@@ -6,7 +6,6 @@ import org.uade.structure.exception.OverflowADTException;
 
 public class StaticStack implements StackADT {
 
-    // Es correcto usar un array estático? o se deben usar nodos?
     int[] items;
     int size = 0;
 
