@@ -25,7 +25,7 @@ public class StaticSet implements SetADT {
         int index = 0;
         boolean found = false;
 
-        while(!found && index < this.size+1){
+        while(!found && index < this.size){
             if(this.items[index] == value) found = true;
             index++;
         }
@@ -72,9 +72,8 @@ public class StaticSet implements SetADT {
             this.items[x] = this.items[x+1];
         }
 
-        //El tamaño debe ser mayor a uno, si es cero, no hay mas elementos
-        if(this.size > 1) this.size--;
-        else this.empty = true;
+        if(this.size >= 1) this.size--;
+        if(this.size == 0) this.empty = true;
     }
 
     @Override

@@ -9,17 +9,18 @@ public class StaticSetTest {
     public static void main(String[] args)
     {
 
-        SetADT set = new DynamicSet();
+        SetADT set = new StaticSet(2);
 
         set.add(10);
+        set.remove(10);
         set.add(20);
-        set.add(30);
+        set.add(10);
+        set.remove(10);
 
 
-        SetADT copy = SetHelpers.copy(set); // !!! PROBLEMA COPIANDO DYNAMIC !!!
-        copy.add(40); // CON DYNAMIC, PROBLEMA DE "EL ELEMENTO YA SE ENCUENTRA..." EN COPY
 
-        SetHelpers.print(copy);
+
+        SetHelpers.print(set);
 
 
 

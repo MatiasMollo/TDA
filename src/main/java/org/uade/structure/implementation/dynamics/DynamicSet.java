@@ -46,7 +46,6 @@ public class DynamicSet implements SetADT {
 
     @Override
     public void add(int value) {
-        //if(this.exist(value)) throw new OverflowADTException("Ya existe el elemento en el Set");
 
         if(!this.exist(value)){
             Node newNode = new Node(value);

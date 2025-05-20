@@ -98,14 +98,16 @@ public class StaticSimpleDictionary implements SimpleDictionaryADT {
 
         return index;
     }
-}
 
-class Item{
-    public int key;
-    public int value;
+    class Item{
+        public int key;
+        public int value;
 
-    public Item(int key, int value) {
-        this.key = key;
-        this.value = value;
+        public Item(int key, int value) {
+            this.key = key;
+            this.value = value;
+        }
     }
 }
+
+

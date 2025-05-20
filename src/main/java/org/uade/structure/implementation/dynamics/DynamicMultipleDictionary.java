@@ -32,7 +32,6 @@ public class DynamicMultipleDictionary implements MultipleDictionaryADT {
             Node current = this.node;
             boolean found = false;
 
-            // EL PROBLEMA ES CUANDO SE INTENTA ELIMINAR EL ÚLTIMO ELEMENTO
             while(current.next != null && !found){
                 if(current.next.key == key) found = true;
                 else current = current.next;
