@@ -46,7 +46,7 @@ public class StaticMultipleDictionary implements MultipleDictionaryADT {
         if(this.keys.exist(key)){
             int index = this.findIndex(key);
 
-            while(index < this.size){
+            while(index < this.size-1){
                 this.items[index] = this.items[index+1];
                 index++;
             }

@@ -8,7 +8,7 @@ import org.uade.structure.utils.PriorityQueueHelpers;
 public class Test {
     public static void main(String[] args) {
 
-        PriorityQueueADT queue = new StaticPriorityQueue();
+        PriorityQueueADT queue = new DynamicPriorityQueue();
 
         /*
         queue.add(10,5);
@@ -30,10 +30,9 @@ public class Test {
         queue.add(10,2);
         queue.add(20,3);
         queue.add(30,1);
-        queue.add(40,5);
-        queue.add(50,5);
-        queue.add(60,5);
-        queue.remove();
+        queue.add(20,50);
+
+
         PriorityQueueHelpers.print(queue);
     }
 }

@@ -11,12 +11,12 @@ public class StaticQueue implements QueueADT {
     private int maxSize = 10;
 
     public StaticQueue(){
-        this.items = new int[maxSize];
+        this.items = new int[this.maxSize];
     }
 
     public StaticQueue(int length){
         this.maxSize = length;
-        this.items = new int[length];
+        this.items = new int[this.maxSize];
     }
 
     @Override

@@ -8,12 +8,12 @@ import org.uade.structure.utils.SimpleDictionaryHelpers;
 public class DictionaryTest {
     public static void main(String[] args) {
 
-        SimpleDictionaryADT dict = new DynamicSimpleDictionary();
+        SimpleDictionaryADT dict = new StaticSimpleDictionary();
 
         dict.add(1,1);
-        dict.add(2,2);
-        dict.add(3,3);
-        dict.add(4,4);
+        //dict.add(2,2);
+        //dict.add(3,3);
+        //dict.add(4,4);
         dict.add(8,2);
 
 

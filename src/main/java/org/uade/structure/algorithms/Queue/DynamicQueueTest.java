@@ -8,21 +8,25 @@ import org.uade.structure.utils.QueueHelpers;
 public class DynamicQueueTest {
     public static void main(String[] args) {
 
-        QueueADT queue = new DynamicQueue();
-        //QueueADT queue = new StaticQueue();
+        //QueueADT queue = new DynamicQueue();
+        QueueADT queue = new StaticQueue(100);
 
-        queue.add(10);
-        queue.add(20);
-        queue.add(30);
-        queue.add(40);
-        queue.add(15);
+        queue.add(1);
+        queue.add(2);
+        queue.add(3);
+        queue.add(4);
         queue.add(5);
-        queue.remove();
+        queue.add(6);
+        queue.add(7);
+        queue.add(8);
+        queue.add(9);
+        queue.add(10);
+        queue.add(11);
 
 
-        // No está eliminando como debería, por ahi está eliminando el último
 
-        //System.out.println("Queue First Element: " + queue.getElement());
+
+
         QueueHelpers.print(queue);
 
 
