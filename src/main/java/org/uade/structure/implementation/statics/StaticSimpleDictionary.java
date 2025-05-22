@@ -65,7 +65,24 @@ public class StaticSimpleDictionary implements SimpleDictionaryADT {
 
     @Override
     public SetADT getKeys() {
-        return this.keys;
+        StaticSet copy = new StaticSet(this.maxSize);
+        StaticSet temp = new StaticSet(this.maxSize);
+        int number;
+
+        while(!this.keys.isEmpty()){
+            number = this.keys.choose();
+            copy.add(number);
+            temp.add(number);
+            this.keys.remove(number);
+        }
+
+        while(!temp.isEmpty()){
+            number = temp.choose();
+            this.keys.add(number);
+            temp.remove(number);
+        }
+
+        return copy;
     }
 
     @Override

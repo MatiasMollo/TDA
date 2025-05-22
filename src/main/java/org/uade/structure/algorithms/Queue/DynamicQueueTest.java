@@ -20,7 +20,6 @@ public class DynamicQueueTest {
         queue.add(7);
         queue.add(8);
         queue.add(9);
-        queue.add(10);
         queue.add(11);
 
 

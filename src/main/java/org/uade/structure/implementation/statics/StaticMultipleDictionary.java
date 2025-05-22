@@ -4,6 +4,7 @@ import org.uade.structure.definition.MultipleDictionaryADT;
 import org.uade.structure.definition.SetADT;
 import org.uade.structure.exception.EmptyADTException;
 import org.uade.structure.exception.OverflowADTException;
+import org.uade.structure.implementation.dynamics.DynamicSet;
 
 public class StaticMultipleDictionary implements MultipleDictionaryADT {
 
@@ -54,6 +55,7 @@ public class StaticMultipleDictionary implements MultipleDictionaryADT {
             this.keys.remove(key);
             this.size--;
         }
+        else throw new EmptyADTException("La key no existe en el diccionario");
     }
 
     @Override
@@ -64,7 +66,24 @@ public class StaticMultipleDictionary implements MultipleDictionaryADT {
 
     @Override
     public SetADT getKeys() {
-        return this.keys;
+        StaticSet copy = new StaticSet(this.maxSize);
+        StaticSet temp = new StaticSet(this.maxSize);
+        int number;
+
+        while(!this.keys.isEmpty()){
+            number = this.keys.choose();
+            copy.add(number);
+            temp.add(number);
+            this.keys.remove(number);
+        }
+
+        while(!temp.isEmpty()){
+            number = temp.choose();
+            this.keys.add(number);
+            temp.remove(number);
+        }
+
+        return copy;
     }
 
     @Override
@@ -78,12 +97,10 @@ public class StaticMultipleDictionary implements MultipleDictionaryADT {
             int index = this.findIndex(key);
             Node current = this.items[index];
 
-            if(current.items.size() == 1) this.remove(key);
-            else{
-                current.removeValue(value);
-                if(current.items.isEmpty()) this.remove(key);
-            }
+            current.removeValue(value);
+            if(current.items.isEmpty()) this.remove(key);
         }
+        else throw new EmptyADTException("La key no existe en el diccionario");
     }
 
 
@@ -144,14 +161,18 @@ public class StaticMultipleDictionary implements MultipleDictionaryADT {
         {
             int index = 0;
             int maxSize = this.items.size();
+            boolean found = false;
 
             while(index < maxSize){
                 if(this.items.get(index) == value){
                     this.items.remove(index);
                     maxSize--;
+                    found = true;
                 }
                 else index++;
             }
+
+            if(!found) throw new EmptyADTException("El valor no existe en la key especificada");
         }
     }
 }

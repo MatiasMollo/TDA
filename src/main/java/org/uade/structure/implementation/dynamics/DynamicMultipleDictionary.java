@@ -22,7 +22,6 @@ public class DynamicMultipleDictionary implements MultipleDictionaryADT {
             this.node = newNode;
             keys.add(key);
         }
-
     }
 
     @Override
@@ -42,6 +41,7 @@ public class DynamicMultipleDictionary implements MultipleDictionaryADT {
 
             keys.remove(key);
         }
+        else throw new EmptyADTException("La key no existe en el diccionario");
     }
 
     @Override
@@ -53,7 +53,24 @@ public class DynamicMultipleDictionary implements MultipleDictionaryADT {
 
     @Override
     public SetADT getKeys() {
-        return keys;
+        DynamicSet copy = new DynamicSet();
+        DynamicSet temp = new DynamicSet();
+        int number;
+
+        while(!this.keys.isEmpty()){
+            number = this.keys.choose();
+            copy.add(number);
+            temp.add(number);
+            this.keys.remove(number);
+        }
+
+        while(!temp.isEmpty()){
+            number = temp.choose();
+            this.keys.add(number);
+            temp.remove(number);
+        }
+
+        return copy;
     }
 
     @Override
@@ -66,12 +83,11 @@ public class DynamicMultipleDictionary implements MultipleDictionaryADT {
         if(this.keys.exist(key)){
             Node current = this.find(key);
 
-            if(current.items.size() == 1) this.remove(key);
-            else{
-                current.removeValue(value);
-                if(current.items.isEmpty()) this.remove(key);
-            }
+
+            current.removeValue(value);
+            if(current.items.isEmpty()) this.remove(key);
         }
+        else throw new EmptyADTException("La key no existe en el diccionario");
     }
 
     /**
@@ -142,14 +158,18 @@ public class DynamicMultipleDictionary implements MultipleDictionaryADT {
         {
             int index = 0;
             int maxSize = this.items.size();
+            boolean found = false;
 
             while(index < maxSize){
                 if(this.items.get(index) == value){
                     this.items.remove(index);
                     maxSize--;
+                    found = true;
                 }
                 else index++;
             }
+
+            if(!found) throw new EmptyADTException("El valor no existe en la key especificada");
         }
 
     }
